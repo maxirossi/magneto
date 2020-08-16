@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 /* configs */
 const config = require('./config/config').config;
 const port = config.port;
@@ -8,12 +9,6 @@ const helper = require('./helpers/helpers');
 /* routes */
 const routes = require('./routes/routes').router;
 app.use(routes);
-
-/*
-app.get('/', (req, res) => {
-    res.send('Hello');
-});
-*/
 
 app.listen(port, () => {
     console.log(`App listening ${port}`)
