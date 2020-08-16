@@ -8,6 +8,7 @@ function mutant(req, res){
     }
     let dna = req.body.dna;
     if (helpers.isValidDNA(dna)){
+        let matrix = helpers.createMatrix(dna);
         response.success( req, res, 'DNA valid.', null );
     }else{
         response.error( req, res, 'DNA invalid.', null );
