@@ -1,3 +1,4 @@
+
 let validateCharactersDNA = function (dna)
 {
     let validatChars =  ['A','T','C','G'];
