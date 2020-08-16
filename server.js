@@ -6,10 +6,14 @@ const port = config.port;
 /* helpers */
 const helper = require('./helpers/helpers');
 /* routes */
+const routes = require('./routes/routes').router;
+app.use(routes);
 
+/*
 app.get('/', (req, res) => {
     res.send('Hello');
 });
+*/
 
 app.listen(port, () => {
     console.log(`App listening ${port}`)
