@@ -64,7 +64,43 @@ function sarchMatch(dnaPart, chain, n, char )
     }
 }
 
+function diagonalScanner(dna, chars, n = 4, start = 0)
+{
+    let line = '';
+    let length = dna[0].length;
+    let charsMatch = [];
+    let search = new Array();
+    for (i = 0; i < dna.length; i++){
+        if (i == 0 ){
+            for (let j = 0; j < dna.length; j++){
+                if (dna[j][j+start] === undefined && line !== ''){
+                    console.log('line(1) =>', line);
+                    line = '';
+                }
+                if (dna[j][j+start] !== undefined){
+                    line += dna[j][j+start];
+                }
+            }
+        }else{
+            let c = i;
+            for(let j = 0; j < dna.length; j++){
+                if (dna[c] == undefined){
+                    console.log('line(2) =>', line);
+                    line = '';
+                    break;
+                }else{
+                   if (dna[c][j+start] !== undefined){
+                       line += dna[c][j+start];
+                   }
+                }
+                c++;
+            }
+        }
+    }
+}
+
 module.exports =  {
     horizontalScanner,
-    verticalScanner
+    verticalScanner,
+    diagonalScanner
 }

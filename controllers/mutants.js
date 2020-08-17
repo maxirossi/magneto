@@ -13,6 +13,8 @@ function mutant(req, res){
         let matrix = helpers.createMatrix(dna);
         let checkHorizontal = scanner.horizontalScanner(matrix, validatChars);
         let checkVertical = scanner.verticalScanner(matrix, validatChars);
+        let checkDiagonal = scanner.diagonalScanner(matrix, validatChars, 4, 4);
+        // check diagonal
         response.success( req, res, 'DNA valid.', null );
     }else{
         response.error( req, res, 'DNA invalid.', null );

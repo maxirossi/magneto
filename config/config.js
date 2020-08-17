@@ -1,7 +1,8 @@
 let config = {
-    port : 3000
+    port : 3030
 }
 
 module.exports = {
     config
 }
+

@@ -33,9 +33,9 @@ let isValidDNA = function(dna)
     return isValid;
 }
 
-let createMatrix = function (dna)
+let createMatrix = function (dna, start = 0)
 {
-    var rowLength = dna[0].length;
+    let rowLength = dna[0].length;
     let matrix = new Array(rowLength);
     for ( i = 0; i < matrix.length; i++){
         matrix[i] = new Array(rowLength);
