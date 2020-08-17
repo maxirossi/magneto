@@ -29,6 +29,26 @@ function add(data){
     });
 }
 
+async function get( isMutant ){
+    return new Promise((resolve, reject) => {
+        stats.find({ 
+            "mutant" : isMutant,
+        })
+        .then((docs) => {
+            resolve({
+                "data" : docs
+            });
+            return;
+        }).catch((err) => {
+            reject({
+                "error" : err
+            });
+            return;
+        });
+    });
+}
+
 module.exports = {
-    add
+    add,
+    get
 }

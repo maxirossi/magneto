@@ -30,14 +30,26 @@ function mutant(req, res){
                 dna : dna.join(''),
                 mutant : true
             }
-            stats.add(stat);
+            stats.add(stat)
+                .then((res) => {
+                    // [OK]
+                })
+                .catch((err) => {
+                    // [KO]
+                });
             response.success( req, res, 'Mutant DNA.', null )
         }else{
             let stat = {
                 dna : dna.join(''),
                 mutant : false
             }
-            stats.add(stat);
+            stats.add(stat)
+                .then((res) => {
+                    // [OK]
+                })
+                .catch((err) => {
+                    // [KO]
+                });
             response.error( req, res, 'Human DNA.', null , 403)
         }
     }else{
