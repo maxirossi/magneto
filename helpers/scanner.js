@@ -74,7 +74,16 @@ function diagonalScanner(dna, chars, n = 4, start = 0)
         if (i == 0 ){
             for (let j = 0; j < dna.length; j++){
                 if (dna[j][j+start] === undefined && line !== ''){
-                    console.log('line(1) =>', line);
+                    // evaluate
+                    for (let x = 0; x < chars.length; x++){
+                        let chain = chars[x] + chars[x] + chars[x] + chars[x];
+                        search[x] = chain;
+                        if (sarchMatch(line, chain, n-1, chars[x])){
+                            if (charsMatch.indexOf(chars[x]) == -1){
+                                charsMatch.push(chars[x]);
+                            }
+                        }
+                    }
                     line = '';
                 }
                 if (dna[j][j+start] !== undefined){
@@ -85,7 +94,16 @@ function diagonalScanner(dna, chars, n = 4, start = 0)
             let c = i;
             for(let j = 0; j < dna.length; j++){
                 if (dna[c] == undefined){
-                    console.log('line(2) =>', line);
+                    // evaluate
+                    for (let x = 0; x < chars.length; x++){
+                        let chain = chars[x] + chars[x] + chars[x] + chars[x];
+                        search[x] = chain;
+                        if (sarchMatch(line, chain, n-1, chars[x])){
+                            if (charsMatch.indexOf(chars[x]) == -1){
+                                charsMatch.push(chars[x]);
+                            }
+                        }
+                    }
                     line = '';
                     break;
                 }else{
@@ -97,6 +115,7 @@ function diagonalScanner(dna, chars, n = 4, start = 0)
             }
         }
     }
+    return charsMatch;
 }
 
 module.exports =  {

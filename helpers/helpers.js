@@ -33,7 +33,7 @@ let isValidDNA = function(dna)
     return isValid;
 }
 
-let createMatrix = function (dna, start = 0)
+let createMatrix = function (dna)
 {
     let rowLength = dna[0].length;
     let matrix = new Array(rowLength);
@@ -53,7 +53,18 @@ let createMatrix = function (dna, start = 0)
     return matrix;
 }
 
+let addMatch = function (results, matches)
+{
+    results.forEach((result) =>{
+        if (!matches.includes(result)){
+            matches.push(result);
+        }
+    });
+    return matches;
+}
+
 module.exports = {
     isValidDNA,
-    createMatrix
+    createMatrix,
+    addMatch
 }
