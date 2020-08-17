@@ -2,11 +2,8 @@ var configDB = require('../config/config').dbConfig;
 
 function connect ( mongoose, db = null ){
 
-    let aDb;
-    aDb = 'magneto';
-
-    var mongoDB = `mongodb://${configDB.user}:${configDB.pwd}@${configDB.host}/${aDb}`;
-   
+    var mongoDB = `mongodb+srv://${configDB.user}:${configDB.pwd}@${configDB.host}/${configDB.database}?retryWrites=true&w=majority`;
+    
     mongoose.connect( mongoDB, {
         useNewUrlParser : true,
         useUnifiedTopology : true,

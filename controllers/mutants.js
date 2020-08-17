@@ -3,6 +3,9 @@ const response = new Response();
 const helpers = require('../helpers/helpers');
 const scanner = require('../helpers/scanner');
 
+/* models */
+const stats = require('../models/stats');
+
 function mutant(req, res){
     if (!req.body.dna){
         response.error( req, res, null, null );
@@ -23,8 +26,18 @@ function mutant(req, res){
             matches = helpers.addMatch(result, matches);
         }
         if (matches.length >= 2){
+            let stat = {
+                dna : dna.join(''),
+                mutant : true
+            }
+            stats.add(stat);
             response.success( req, res, 'Mutant DNA.', null )
         }else{
+            let stat = {
+                dna : dna.join(''),
+                mutant : false
+            }
+            stats.add(stat);
             response.error( req, res, 'Human DNA.', null , 403)
         }
     }else{
