@@ -53,6 +53,22 @@ let createMatrix = function (dna)
     return matrix;
 }
 
+let createReverseMatrix = function(dna)
+{
+    for(x = 0; dna.length > x; x++){
+        dna[x] = reverseString(dna[x]);
+    }
+    let reverseMatrix = createMatrix(dna);
+    return reverseMatrix;
+}
+
+let reverseString = function(str) {
+    var splitString = str.split("");
+    var reverseArray = splitString.reverse(); 
+    var joinArray = reverseArray.join(""); 
+    return joinArray;
+}
+
 let addMatch = function (results, matches)
 {
     results.forEach((result) =>{
@@ -66,5 +82,6 @@ let addMatch = function (results, matches)
 module.exports = {
     isValidDNA,
     createMatrix,
-    addMatch
+    addMatch,
+    createReverseMatrix
 }

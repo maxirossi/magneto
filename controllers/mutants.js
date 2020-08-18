@@ -15,6 +15,7 @@ function mutant(req, res){
         let validatChars = ['A','T','C','G'];
         let matches = new Array();
         let matrix = helpers.createMatrix(dna);
+        let reverseMatrix = helpers.createReverseMatrix(dna);
         let checkHorizontal = scanner.horizontalScanner(matrix, validatChars);
         let checkVertical = scanner.verticalScanner(matrix, validatChars);
         matches = helpers.addMatch(checkHorizontal, matches);
@@ -23,6 +24,9 @@ function mutant(req, res){
         for(let x = 0; x < dna[0].length; x++){
             let result = new Array();
             result = scanner.diagonalScanner(matrix, validatChars, x);
+            matches = helpers.addMatch(result, matches);
+            // reverse matrix
+            result = scanner.diagonalScanner(reverseMatrix, validatChars, x);
             matches = helpers.addMatch(result, matches);
         }
         if (matches.length >= 2){
